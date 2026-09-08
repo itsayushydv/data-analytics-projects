@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Report | UK e-commerce Data Analysis </title>
+</head>
+
+<body>
+    <!--Introduction of webpage-->
+    <header>
+        <div><strong><h1>UK E-Commerce Dataset — Final Report Analysis</h1></strong></div>
+        <strong>Prepared by:</strong> Ayush | Data Analyst
+        <strong>Dataset:</strong> <a href='https://www.kaggle.com/datasets/carrie1/ecommerce-data'
+            target="_blank">Kaggle —
+            carrie1/ecommerce-data </a>
+        UK-based online retailer, Dec 2010–Dec 2011, 541,909 transaction line items
+    </header>
+
+    <main>
+        <!---Executive summary-->
+        <section id='summary'>
+            <h2>Executive Summary</h2>
+
+            <article>
+                This report analyzes 13 months of transactional data from a UK-based online retailer specializing in
+                unique
+                all-occasion gifts, sold primarily to wholesale customers.<br> After cleaning, the dataset yields
+                <emplace>524,878
+                    valid sales line</emplace> itemsacross <emplace>4,338 identified customers</emplace>, <emplace>
+                    ~4,000 products</emplace>, and <emplace> 38 countries</emplace>.
+            </article>
+
+            <strong>Top-line findings:</strong>
+            <ol>
+                <li><strong>Revenue is heavily concentrated.</strong> The top ~26% of customers generate 80% of revenue,
+                    and a single RFM segment ("Champions") — 26% of customers — accounts for 66.5% of total revenue</li>
+
+                <li><strong>Retention is weak and flat.</strong> Only ~21–24% of customers in any acquisition cohort
+                    return to purchase
+                    again within 6 months, and this doesn't meaningfully improve over time — suggesting a one-and-done
+                    pattern
+                    rather than habitual repeat buying.</li>
+
+                <li><strong>The business is wholesale/B2B, not consumer retail.</strong> No Saturday trading at all,
+                    revenue concentrated
+                    on weekdays during business hours, and a median order value of £303 point to bulk-buying business
+                    customers
+                    rather than individual shoppers.</li>
+                <li><strong>Growth is UK-dependent (84.6% of revenue) </strong> with the Netherlands, EIRE, and Germany
+                    as the largest —
+                    but still minor — international markets.</li>
+                <li><strong>Revenue is strongly seasonal</strong>, peaking in November ahead of the holiday season,
+                    which has direct
+                    implications for inventory and staffing planning.</li>
+            </ol>
+
+            <article>
+                This report consolidates four supporting notebooks: <a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                    target="_blank">Data cleaning</a> <a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                    target="_blank">RFM Segmentation</a> <a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                    target="_blank">Cohort Analysis</a> and <a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
+                    target="_blank">Revenue Trend</a>. Each contains the full methodology, code, and
+                intermediate
+                diagnostics behind the summaries below.
+            </article>
+        </section>
+
+
+    </main>
+</body>
+
+</html>
