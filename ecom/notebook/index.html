@@ -101,17 +101,50 @@
 
             <h2>Customer Segmentation (RFM)</h2>
             <article>
-                Customers were scored on <strong>Recency, Frequency, and Monetary</strong> value (quintiles) and mapped into 9
+                Customers were scored on <strong>Recency, Frequency, and Monetary</strong> value (quintiles) and mapped
+                into 9
                 business-readable segments.
             </article>
-            <img src ="rfm_segment_summary.png" alt = "rfm_segment_summary">
-            <img src ="rfm_segment_share.png" alt = "rfm_segment_share"> 
-            <img src ="rfm_pareto_curve.png" alt = "rfm_pareto_curve">
+            <img src="rfm_segment_summary.png" alt="rfm_segment_summary">
+            <img src="rfm_segment_share.png" alt="rfm_segment_share">
+            <img src="rfm_pareto_curve.png" alt="rfm_pareto_curve">
         </section>
 
         <article>
-            <strong>Insight:</strong> Revenue concentration here is extreme even by typical retail standards. The <strong>Champions</strong> segment (recent + frequent buyers) is only 26% of the customer base but drives two-thirds of all revenue. On the other end, <em>18.9% of customers ("Hibernating/Lost")</em> haven't purchased recently and contribute only 2.1% of revenue — a natural target for a win-back campaign, though the ROI ceiling there is low compared to simply protecting the Champions segment from churn.
+            <strong>Insight:</strong> Revenue concentration here is extreme even by typical retail standards. The
+            <strong>Champions</strong> segment (recent + frequent buyers) is only 26% of the customer base but drives
+            two-thirds of all revenue. On the other end, <em>18.9% of customers ("Hibernating/Lost")</em> haven't
+            purchased recently and contribute only 2.1% of revenue — a natural target for a win-back campaign, though
+            the ROI ceiling there is low compared to simply protecting the Champions segment from churn. <br>
+            For full methodology you can refer to this notebook : <a
+                href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                target="_blank">RFM Segmentation</a>
         </article>
+
+        <section id=>
+            <h2>Cohort Retention Analysis</h2>
+            <article>
+                Customers were grouped by acquisition month, then tracked for how many stayed active in the
+                following months.</article>
+
+            <img src="cohort_retention_heatmap.png" alt="cohort_retention_heatmap">
+            <img src="avg_retention_curve.png" alt="cohort_retention_heatmap">
+            <article>
+                <strong>Insight:</strong> Retention is both low and largely flat — cohorts don't show a strong "settling
+                in" curve where retention stabilizes after an initial drop-off; the ~21-24% return rate is roughly
+                consistent from month 1 through month 6. Combined with the RFM finding, this reinforces that <em>most
+                    customer value comes from a core group who buy repeatedly and often</em>, while the majority of
+                customers churn early. Retention marketing (onboarding sequences, second-purchase incentives) targeted
+                at month 1–2 after first purchase would have the most leverage, since that's where the largest drop-off
+                happens.
+            </article>
+            <img src="new_customer.png" alt="new_customer.png">
+            <article>
+                For Full methodology you can refer to this notebook :<a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                    target="_blank">Cohort Analysis</a>
+            </article>
+        </section>
 
     </main>
 </body>
