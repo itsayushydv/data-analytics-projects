@@ -10,7 +10,9 @@
 <body>
     <!--Introduction of webpage-->
     <header>
-        <div><strong><h1>UK E-Commerce Dataset — Final Report Analysis</h1></strong></div>
+        <div><strong>
+                <h1>UK E-Commerce Dataset — Final Report Analysis</h1>
+            </strong></div>
         <strong>Prepared by:</strong> Ayush | Data Analyst
         <strong>Dataset:</strong> <a href='https://www.kaggle.com/datasets/carrie1/ecommerce-data'
             target="_blank">Kaggle —
@@ -27,9 +29,9 @@
                 This report analyzes 13 months of transactional data from a UK-based online retailer specializing in
                 unique
                 all-occasion gifts, sold primarily to wholesale customers.<br> After cleaning, the dataset yields
-                <emplace>524,878
-                    valid sales line</emplace> itemsacross <emplace>4,338 identified customers</emplace>, <emplace>
-                    ~4,000 products</emplace>, and <emplace> 38 countries</emplace>.
+                <em>524,878
+                    valid sales line</em> itemsacross <em>4,338 identified customers</em>, <em>
+                    ~4,000 products</em>, and <em> 38 countries</em>.
             </article>
 
             <strong>Top-line findings:</strong>
@@ -68,6 +70,29 @@
                     target="_blank">Revenue Trend</a>. Each contains the full methodology, code, and
                 intermediate
                 diagnostics behind the summaries below.
+            </article>
+        </section>
+
+        <!---Data Overview and cleaning-->
+        <section id='cleaning_overview'>
+
+            <h2>Data Overview and cleaning</h2>
+            <strong>Key cleaning decisions:</strong>
+            <ul>
+                <li>Cancelled orders (InvoiceNo starting with 'C') were separated out rather than netted against sales —
+                    they
+                    represent returns, not negative demand.</li>
+                <li>Rows with zero/negative quantity or price (data entry errors, non-product entries like postage/bank
+                    fees)
+                    were removed.</li>
+                <li>~25% of rows lacked a `CustomerID` (likely guest checkouts); these were kept for revenue-trend
+                    analysis
+                    but excluded from customer-level work (RFM, cohorts), since they can't be attributed to anyone.</li>
+            </ul>
+            <article>
+                For full methodology you can refer to this notebook : <a
+                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                    target="_blank">Data cleaning</a>.
             </article>
         </section>
 
