@@ -175,34 +175,39 @@
             <img src="order_value_distribution.png" alt="order_value_distribution.png">
         </section>
 
-        <section id="">
+        <section id="recommendations">
             <h2>Recommendations</h2>
             <article>
                 Based on the findings above, in priority order:
 
                 <ol>
-                    <li><strong>Protect and grow the Champions segment first.</strong> At 66.5% of revenue from 26% of customers,
+                    <li><strong>Protect and grow the Champions segment first.</strong> At 66.5% of revenue from 26% of
+                        customers,
                         even a
                         small amount of churn here has an outsized financial impact. Consider a dedicated
                         account-management or
                         loyalty-perks approach for this group rather than generic marketing.</li>
-                    <li><strong>Intervene at the month-1 mark.</strong> Since retention is already flat by month 1 (~21%), the
+                    <li><strong>Intervene at the month-1 mark.</strong> Since retention is already flat by month 1
+                        (~21%), the
                         highest-leverage moment is immediately after a customer's first order — a structured follow-up
                         (discount
                         on 2nd order, check-in call for wholesale accounts) is more likely to move the needle than
                         late-stage
                         win-back campaigns.</li>
-                    <li><strong>Plan inventory and staffing around the November peak</strong>, and treat the December dip in this
+                    <li><strong>Plan inventory and staffing around the November peak</strong>, and treat the December
+                        dip in this
                         dataset
                         as a data artifact (partial month), not a genuine seasonal decline, when building forecasts.
                     </li>
-                    <li><strong>Investigate international expansion cautiously.</strong> The Netherlands, EIRE, and Germany show the
+                    <li><strong>Investigate international expansion cautiously.</strong> The Netherlands, EIRE, and
+                        Germany show the
                         most
                         non-UK revenue, but international revenue overall is small (15.4%) — worth a deeper look at
                         whether this
                         is due to limited marketing reach, shipping costs, or genuinely lower demand before investing
                         further.</li>
-                    <li><strong>Re-examine "Hibernating/Lost" customers opportunistically, not urgently.</strong> They're a large
+                    <li><strong>Re-examine "Hibernating/Lost" customers opportunistically, not urgently.</strong>
+                        They're a large
                         group
                         (18.9% of customers) but contribute little revenue (2.1%) — a low-cost automated win-back email
                         is
@@ -210,6 +215,44 @@
                         segments.</li>
                 </ol>
             </article>
+        </section>
+
+        <!--Apendix-->
+        <section id="appendix">
+            <h2>Appendix - Notebook in this project</h2>
+
+            <table>
+                <!-- This is the header row -->
+                <tr>
+                    <th>Notebook</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                            target="_blank">data_cleaning.ipynb</a></td>
+                    <td>Load, audit, and clean the raw dataset; produce reusable cleaned datasets</td>
+                </tr>
+
+                <tr>
+                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                            target="_blank">rfm.ipynb</a></td>
+                    <td>RFM scoring and customer segmentation</td>
+                </tr>
+
+                <tr>
+                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                            target="_blank">cohort_analysis.ipynb</a></td>
+                    <td>Monthly acquisition cohorts and retention curve</td>
+                </tr>
+
+                <tr>
+                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
+                            target="_blank">revenue_trend.ipynb</a> </td>
+                    <td>Seasonality, products, countries, order value, operating patterns</td>
+                </tr>
+            </table>
+
         </section>
 
     </main>
