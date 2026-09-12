@@ -5,211 +5,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Report | UK e-commerce Data Analysis </title>
+    <style>
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style2.css">
 </head>
 
-<body>
+<body id="report-body" class="report">
     <!--Introduction of webpage-->
-    <header>
-        <div><strong>
-                <h1>UK E-Commerce Dataset — Final Report Analysis</h1>
+    <header id="report-header" class="report-header fade-in">
+        <div class="header-title-wrap"><strong>
+                <h1 class="report-title">UK E-Commerce Dataset — Final Report Analysis</h1>
             </strong></div>
-        <strong>Prepared by:</strong> Ayush | Data Analyst
-        <strong>Dataset:</strong> <a href='https://www.kaggle.com/datasets/carrie1/ecommerce-data'
-            target="_blank">Kaggle —
-            carrie1/ecommerce-data </a>
-        UK-based online retailer, Dec 2010–Dec 2011, 541,909 transaction line items
+        <div class="header-meta">
+            <span class="meta-item author"><strong>Prepared by:</strong> Ayush Yadav | Data Analyst</span>
+            <span class="meta-item dataset">
+                <strong>Dataset:</strong> <a class="dataset-link"
+                    href='https://www.kaggle.com/datasets/carrie1/ecommerce-data' target="_blank">Kaggle —
+                    carrie1/ecommerce-data </a>
+            </span>
+            <span class="meta-item dataset-desc">UK-based online retailer, Dec 2010–Dec 2011, <span
+                    class="stat-highlight" data-stat="line-items">541,909</span> transaction line items</span>
+        </div>
+        <nav id="report-nav" class="report-nav" aria-label="Report contents">
+            <strong>Contents:</strong>
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="#summary">Executive Summary</a></li>
+                <li class="nav-item"><a class="nav-link" href="#cleaning_overview">Data Overview and cleaning</a></li>
+                <li class="nav-item"><a class="nav-link" href="#rfm">Customer Segmentation (RFM)</a></li>
+                <li class="nav-item"><a class="nav-link" href="#cohort-retention">Cohort Retention Analysis</a></li>
+                <li class="nav-item"><a class="nav-link" href="#revenue-trend">Revenue Trend</a></li>
+                <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
+                <li class="nav-item"><a class="nav-link" href="#appendix">Appendix</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
+    <main id="report-main" class="report-main">
         <!---Executive summary-->
-        <section id='summary'>
-            <h2>Executive Summary</h2>
+        <section id='summary' class="report-section section-summary reveal-on-scroll">
+            <h2 class="section-title">Executive Summary</h2>
 
-            <article>
+            <article class="section-intro">
                 This report analyzes 13 months of transactional data from a UK-based online retailer specializing in
                 unique
                 all-occasion gifts, sold primarily to wholesale customers.<br> After cleaning, the dataset yields
-                <em>524,878
-                    valid sales line</em> itemsacross <em>4,338 identified customers</em>, <em>
-                    ~4,000 products</em>, and <em> 38 countries</em>.
+                <em>
+                    <span class="stat-highlight" data-stat="valid-lines">524,878</span> valid sales line</em> items
+                across
+                <em> <span class="stat-highlight" data-stat="customers">4,338</span> identified customers</em>,
+                <em> <span class="stat-highlight" data-stat="products">~4,000</span> products</em>, and
+                <em> <span class="stat-highlight" data-stat="countries">38</span> countries</em>.
             </article>
 
-            <strong>Top-line findings:</strong>
-            <ol>
-                <li><strong>Revenue is heavily concentrated.</strong> The top ~26% of customers generate 80% of revenue,
-                    and a single RFM segment ("Champions") — 26% of customers — accounts for 66.5% of total revenue</li>
+            <div class="key-findings-wrap">
+                <strong>Top-line findings:</strong>
+                <ol class="key-findings-list">
+                    <li class="finding-item finding-1"><strong>Revenue is heavily concentrated.</strong> The top
+                        ~<span class="stat-highlight" data-stat="top-customer-pct">26%</span> of customers generate
+                        <span class="stat-highlight" data-stat="pareto-revenue-pct">80%</span> of revenue,
+                        and a single RFM segment ("Champions") —
+                        <span class="stat-highlight" data-stat="champions-pct">26%</span> of customers — accounts for
+                        <span class="stat-highlight" data-stat="champions-revenue-pct">66.5%</span> of total revenue
+                    </li>
 
-                <li><strong>Retention is weak and flat.</strong> Only ~21–24% of customers in any acquisition cohort
-                    return to purchase
-                    again within 6 months, and this doesn't meaningfully improve over time — suggesting a one-and-done
-                    pattern
-                    rather than habitual repeat buying.</li>
+                    <li class="finding-item finding-2"><strong>Retention is weak and flat.</strong> Only
+                        ~<span class="stat-highlight" data-stat="retention-rate">21–24%</span> of customers in any
+                        acquisition cohort
+                        return to purchase
+                        again within 6 months, and this doesn't meaningfully improve over time — suggesting a
+                        one-and-done
+                        pattern
+                        rather than habitual repeat buying.</li>
 
-                <li><strong>The business is wholesale/B2B, not consumer retail.</strong> No Saturday trading at all,
-                    revenue concentrated
-                    on weekdays during business hours, and a median order value of £303 point to bulk-buying business
-                    customers
-                    rather than individual shoppers.</li>
-                <li><strong>Growth is UK-dependent (84.6% of revenue) </strong> with the Netherlands, EIRE, and Germany
-                    as the largest —
-                    but still minor — international markets.</li>
-                <li><strong>Revenue is strongly seasonal</strong>, peaking in November ahead of the holiday season,
-                    which has direct
-                    implications for inventory and staffing planning.</li>
-            </ol>
+                    <li class="finding-item finding-3"><strong>The business is wholesale/B2B, not consumer
+                            retail.</strong> No Saturday trading at all,
+                        revenue concentrated
+                        on weekdays during business hours, and a median order value of
+                        <span class="stat-highlight" data-stat="median-order-value">£303</span> point to bulk-buying
+                        business
+                        customers
+                        rather than individual shoppers.
+                    </li>
+                    <li class="finding-item finding-4"><strong>Growth is UK-dependent (<span class="stat-highlight"
+                                data-stat="uk-revenue-pct">84.6%</span> of revenue) </strong> with the Netherlands,
+                        EIRE, and Germany
+                        as the largest —
+                        but still minor — international markets.</li>
+                    <li class="finding-item finding-5"><strong>Revenue is strongly seasonal</strong>, peaking in
+                        November ahead of the holiday season,
+                        which has direct
+                        implications for inventory and staffing planning.</li>
+                </ol>
+            </div>
 
-            <article>
-                This report consolidates four supporting notebooks: <a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
-                    target="_blank">Data cleaning</a> <a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
-                    target="_blank">RFM Segmentation</a> <a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
-                    target="_blank">Cohort Analysis</a> and <a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
-                    target="_blank">Revenue Trend</a>. Each contains the full methodology, code, and
+            <article class="section-outro notebooks-links">
+                This report consolidates four supporting notebooks:
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                        target="_blank">Data cleaning</a></span> ,
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                        target="_blank">RFM Segmentation</a></span> ,
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                        target="_blank">Cohort Analysis</a></span> and
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
+                        target="_blank">Revenue Trend</a></span>. Each contains the full methodology, code, and
                 intermediate
                 diagnostics behind the summaries below.
             </article>
         </section>
 
         <!---Data Overview and cleaning-->
-        <section id='cleaning_overview'>
+        <section id='cleaning_overview' class="report-section section-cleaning reveal-on-scroll">
 
-            <h2>Data Overview and cleaning</h2>
-            <strong>Key cleaning decisions:</strong>
-            <ul>
-                <li>Cancelled orders (InvoiceNo starting with 'C') were separated out rather than netted against sales —
-                    they
-                    represent returns, not negative demand.</li>
-                <li>Rows with zero/negative quantity or price (data entry errors, non-product entries like postage/bank
-                    fees)
-                    were removed.</li>
-                <li>~25% of rows lacked a `CustomerID` (likely guest checkouts); these were kept for revenue-trend
-                    analysis
-                    but excluded from customer-level work (RFM, cohorts), since they can't be attributed to anyone.</li>
-            </ul>
-            <article>
-                For full methodology you can refer to this notebook : <a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
-                    target="_blank">Data cleaning</a>.
+            <h2 class="section-title">Data Overview and cleaning</h2>
+            <div class="cleaning-decisions-wrap">
+                <strong>Key cleaning decisions:</strong>
+                <ul class="cleaning-list">
+                    <li class="cleaning-item item-cancelled">Cancelled orders (InvoiceNo starting with 'C') were
+                        separated out rather than netted against sales —
+                        they
+                        represent returns, not negative demand.</li>
+                    <li class="cleaning-item item-invalid-rows">Rows with zero/negative quantity or price (data entry
+                        errors, non-product entries like postage/bank
+                        fees)
+                        were removed.</li>
+                    <li class="cleaning-item item-missing-id">~<span class="stat-highlight"
+                            data-stat="missing-customerid-pct">25%</span> of rows lacked a `CustomerID` (likely guest
+                        checkouts); these were kept for revenue-trend
+                        analysis
+                        but excluded from customer-level work (RFM, cohorts), since they can't be attributed to
+                        anyone.</li>
+                </ul>
+            </div>
+            <article class="section-outro">
+                For full methodology you can refer to this notebook :
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                        target="_blank">Data cleaning</a></span>.
             </article>
         </section>
 
         <!--Customer segmentation and RFM Analysis-->
-        <section id='rfm'>
+        <section id='rfm' class="report-section section-rfm reveal-on-scroll">
 
-            <h2>Customer Segmentation (RFM)</h2>
-            <article>
+            <h2 class="section-title">Customer Segmentation (RFM)</h2>
+            <article class="section-intro">
                 Customers were scored on <strong>Recency, Frequency, and Monetary</strong> value (quintiles) and mapped
                 into 9
                 business-readable segments.
             </article>
-            <img src="rfm_segment_summary.png" alt="rfm_segment_summary">
-            <img src="rfm_segment_share.png" alt="rfm_segment_share">
-            <img src="rfm_pareto_curve.png" alt="rfm_pareto_curve">
+            <div class="chart-gallery rfm-charts">
+                <figure class="chart-figure" id="chart-rfm-summary">
+                    <img src="rfm_segment_summary.png" alt="rfm_segment_summary" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-rfm-share">
+                    <img src="rfm_segment_share.png" alt="rfm_segment_share" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-rfm-pareto">
+                    <img src="rfm_pareto_curve.png" alt="rfm_pareto_curve" class="img chart-img">
+                </figure>
+            </div>
         </section>
 
-        <article>
-            <strong>Insight:</strong> Revenue concentration here is extreme even by typical retail standards. The
-            <strong>Champions</strong> segment (recent + frequent buyers) is only 26% of the customer base but drives
-            two-thirds of all revenue. On the other end, <em>18.9% of customers ("Hibernating/Lost")</em> haven't
-            purchased recently and contribute only 2.1% of revenue — a natural target for a win-back campaign, though
-            the ROI ceiling there is low compared to simply protecting the Champions segment from churn. <br>
-            For full methodology you can refer to this notebook : <a
-                href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
-                target="_blank">RFM Segmentation</a>
-        </article>
-
-        <section id=>
-            <h2>Cohort Retention Analysis</h2>
+        <div class="insight-box insight-rfm reveal-on-scroll">
             <article>
+                <strong>Insight:</strong> Revenue concentration here is extreme even by typical retail standards. The
+                <strong class="segment-name">Champions</strong> segment (recent + frequent buyers) is only
+                <span class="stat-highlight" data-stat="champions-customer-pct">26%</span> of the customer base but
+                drives
+                two-thirds of all revenue. On the other end,
+                <em><span class="stat-highlight" data-stat="hibernating-pct">18.9%</span> of customers
+                    ("Hibernating/Lost")</em> haven't
+                purchased recently and contribute only <span class="stat-highlight"
+                    data-stat="hibernating-revenue-pct">2.1%</span> of revenue — a natural target for a win-back
+                campaign, though
+                the ROI ceiling there is low compared to simply protecting the Champions segment from churn. <br>
+                For full methodology you can refer to this notebook :
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                        target="_blank">RFM Segmentation</a></span>.
+            </article>
+        </div>
+
+        <section id="cohort-retention" class="report-section section-cohort reveal-on-scroll">
+            <h2 class="section-title">Cohort Retention Analysis</h2>
+            <article class="section-intro">
                 Customers were grouped by acquisition month, then tracked for how many stayed active in the
                 following months.</article>
 
-            <img src="cohort_retention_heatmap.png" alt="cohort_retention_heatmap">
-            <img src="avg_retention_curve.png" alt="cohort_retention_heatmap">
-            <article>
-                <strong>Insight:</strong> Retention is both low and largely flat — cohorts don't show a strong "settling
-                in" curve where retention stabilizes after an initial drop-off; the ~21-24% return rate is roughly
-                consistent from month 1 through month 6. Combined with the RFM finding, this reinforces that <em>most
-                    customer value comes from a core group who buy repeatedly and often</em>, while the majority of
-                customers churn early. Retention marketing (onboarding sequences, second-purchase incentives) targeted
-                at month 1–2 after first purchase would have the most leverage, since that's where the largest drop-off
-                happens.
-            </article>
-            <img src="new_customer.png" alt="new_customer.png">
-            <article>
-                For Full methodology you can refer to this notebook :<a
-                    href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
-                    target="_blank">Cohort Analysis</a>
+            <div class="chart-gallery cohort-charts">
+                <figure class="chart-figure" id="chart-cohort-heatmap">
+                    <img src="cohort_retention_heatmap.png" alt="cohort_retention_heatmap" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-cohort-avg-curve">
+                    <img src="avg_retention_curve.png" alt="cohort_retention_heatmap" class="img chart-img">
+                </figure>
+            </div>
+            <div class="cohort-insight-layout">
+                <figure class="chart-figure single-chart" id="chart-new-customer">
+                    <img src="new_customer.png" alt="New customer count by cohort" class="img chart-img">
+                </figure>
+                <div class="insight-box insight-cohort">
+                    <article>
+                        <strong>Insight:</strong> Customer retention remains consistently low after the initial
+                        acquisition period, indicating that the business struggles to convert first-time buyers into
+                        long-term customers. Across cohorts, retention drops sharply after the first month—from the
+                        initial 100% baseline to roughly <span class="stat-highlight"
+                            data-stat="retention-range">15–37%</span> in Month 1—and then largely stabilizes around
+                        <span class="stat-highlight" data-stat="retention-range">20–30%</span>. The average retention
+                        curve reinforces this pattern: retention falls to approximately <span class="stat-highlight"
+                            data-stat="retention-range">22%</span> in Month 1, remains relatively flat around
+                        <span class="stat-highlight" data-stat="retention-range">22–25%</span> through Months 2–8,
+                        and shows only a modest improvement toward ~<span class="stat-highlight"
+                            data-stat="retention-range">27–31%</span> later.
+
+                        This is important because there is <em>no strong recovery or sustained upward trend after the
+                            initial drop-off</em>. Most cohorts follow a similar pattern, suggesting that weak retention
+                        is a broader customer-lifecycle issue rather than an isolated cohort problem.
+                        <em>Customer value is therefore concentrated within a core group of repeat buyers</em>,
+                        while most customers churn early. Retention efforts such as onboarding, personalized
+                        recommendations, and second-purchase incentives should focus heavily on the
+                        <strong>Month 1–2 window</strong>, where improving repeat purchases could have the greatest
+                        impact on customer lifetime value.
+                </div>
+            </div>
+            <article class="section-outro">
+                For Full methodology you can refer to this notebook :
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                        target="_blank"> Cohort Analysis</a></span>.
             </article>
         </section>
 
         <!--Revenue Trend-->
-        <section id='revenue-trend'>
-            <h2>Revenue Trend</h2>
-            <article>
+        <section id='revenue-trend' class="report-section section-revenue reveal-on-scroll">
+            <h2 class="section-title">Revenue Trend</h2>
 
+            <div class="chart-gallery revenue-trend-charts">
+                <figure class="chart-figure" id="chart-monthly-revenue">
+                    <img src="monthly_revenue_trend.png" alt="monthly_revenue_trend.png" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-yoy-revenue">
+                    <img src="yoy_monthly_revenue.png" alt="yoy_monthly_revenue.png" class="img chart-img">
+                </figure>
+            </div>
+            <div class="insight-box insight-seasonality">
+                <article>
+                    <strong>Seasonality:</strong> Revenue climbs steadily from an August low point through a strong
+                    November
+                    peak (pre-Christmas wholesale ordering), before dropping into a partial/incomplete December (the
+                    dataset
+                    ends Dec 9, 2011, so that month is not a genuine decline).
+                </article>
+            </div>
+
+            <figure class="chart-figure single-chart" id="chart-dow-hour">
+                <img src="dow_hour_revenue.png" alt="dow_hour_revenue.png" class="img chart-img">
+            </figure>
+
+            <div class="insight-box insight-operating-pattern">
+                <article>
+                    <strong>Operating pattern:</strong> There is essentially zero Saturday activity and revenue is
+                    concentrated Monday–Friday during business hours (roughly 9am–4pm). This is a strong signal the
+                    customer
+                    base is business buyers (florists, gift shops, small retailers restocking), not end consumers —
+                    consistent with the large order sizes seen below.
+                </article>
+            </div>
+
+            <div class="chart-gallery revenue-detail-charts">
+                <figure class="chart-figure" id="chart-top-products">
+                    <img src="top_products.png" alt="top_products.png" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-revenue-by-country">
+                    <img src="revenue_by_country.png" alt="revenue_by_country.png" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-revenue-by-country-nonuk">
+                    <img src="revenue_by_country_nonuk.png" alt="revenue_by_country_nonuk.png" class="img chart-img">
+                </figure>
+                <figure class="chart-figure" id="chart-order-value-distribution">
+                    <img src="order_value_distribution.png" alt="order_value_distribution.png" class="img chart-img">
+                </figure>
+            </div>
+
+            <article class="section-outro">
+                For Full methodology you can refer to this notebook :
+                <span class="notebook-link-wrap"><a class="notebook-link"
+                        href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
+                        target="_blank"> Revenue Trend</a></span>.
             </article>
-            <img src="monthly_revenue_trend.png" alt="monthly_revenue_trend.png">
-            <img src="yoy_monthly_revenue.png" alt="yoy_monthly_revenue.png">
-            <article>
-                <strong>Seasonality:</strong> Revenue climbs steadily from an August low point through a strong November
-                peak (pre-Christmas wholesale ordering), before dropping into a partial/incomplete December (the dataset
-                ends Dec 9, 2011, so that month is not a genuine decline).
-            </article>
 
-            <img src="dow_hour_revenue.png" alt="dow_hour_revenue.png">
-
-            <article>
-                <strong>Operating pattern:</strong> There is essentially zero Saturday activity and revenue is
-                concentrated Monday–Friday during business hours (roughly 9am–4pm). This is a strong signal the customer
-                base is business buyers (florists, gift shops, small retailers restocking), not end consumers —
-                consistent with the large order sizes seen below.
-            </article>
-
-            <img src="top_products.png" alt="top_products.png">
-            <img src="revenue_by_country.png" alt="revenue_by_country.png">
-            <img src="revenue_by_country_nonuk.png" alt="revenue_by_country_nonuk.png">
-            <img src="order_value_distribution.png" alt="order_value_distribution.png">
         </section>
 
-        <section id="recommendations">
-            <h2>Recommendations</h2>
-            <article>
+        <section id="recommendations" class="report-section section-recommendations reveal-on-scroll">
+            <h2 class="section-title">Recommendations</h2>
+            <article class="section-intro">
                 Based on the findings above, in priority order:
 
-                <ol>
-                    <li><strong>Protect and grow the Champions segment first.</strong> At 66.5% of revenue from 26% of
+                <ol class="recommendations-list">
+                    <li class="recommendation-item rec-1"><strong>Protect and grow the Champions segment
+                            first.</strong> At <span class="stat-highlight"
+                            data-stat="champions-revenue-pct-2">66.5%</span> of revenue from
+                        <span class="stat-highlight" data-stat="champions-customer-pct-2">26%</span> of
                         customers,
                         even a
                         small amount of churn here has an outsized financial impact. Consider a dedicated
                         account-management or
-                        loyalty-perks approach for this group rather than generic marketing.</li>
-                    <li><strong>Intervene at the month-1 mark.</strong> Since retention is already flat by month 1
-                        (~21%), the
-                        highest-leverage moment is immediately after a customer's first order — a structured follow-up
+                        loyalty-perks approach for this group rather than generic marketing.
+                    </li>
+                    <li class="recommendation-item rec-2"><strong>Intervene at the month-1 mark.</strong> Since
+                        retention is already flat by month 1
+                        (~<span class="stat-highlight" data-stat="month1-retention">21%</span>), the
+                        highest-leverage moment is immediately after a customer's first order — a structured
+                        follow-up
                         (discount
                         on 2nd order, check-in call for wholesale accounts) is more likely to move the needle than
                         late-stage
                         win-back campaigns.</li>
-                    <li><strong>Plan inventory and staffing around the November peak</strong>, and treat the December
+                    <li class="recommendation-item rec-3"><strong>Plan inventory and staffing around the November
+                            peak</strong>, and treat the December
                         dip in this
                         dataset
                         as a data artifact (partial month), not a genuine seasonal decline, when building forecasts.
                     </li>
-                    <li><strong>Investigate international expansion cautiously.</strong> The Netherlands, EIRE, and
+                    <li class="recommendation-item rec-4"><strong>Investigate international expansion
+                            cautiously.</strong> The Netherlands, EIRE, and
                         Germany show the
                         most
-                        non-UK revenue, but international revenue overall is small (15.4%) — worth a deeper look at
+                        non-UK revenue, but international revenue overall is small (<span class="stat-highlight"
+                            data-stat="intl-revenue-pct">15.4%</span>) — worth a deeper look at
                         whether this
                         is due to limited marketing reach, shipping costs, or genuinely lower demand before investing
                         further.</li>
-                    <li><strong>Re-examine "Hibernating/Lost" customers opportunistically, not urgently.</strong>
+                    <li class="recommendation-item rec-5"><strong>Re-examine "Hibernating/Lost" customers
+                            opportunistically, not urgently.</strong>
                         They're a large
                         group
-                        (18.9% of customers) but contribute little revenue (2.1%) — a low-cost automated win-back email
+                        (<span class="stat-highlight" data-stat="hibernating-customer-pct">18.9%</span> of customers)
+                        but contribute little revenue (<span class="stat-highlight"
+                            data-stat="hibernating-revenue-pct-2">2.1%</span>) — a low-cost automated win-back email
                         is
                         reasonable, but this segment shouldn't compete for resources against the Champions/Loyal
                         segments.</li>
@@ -218,44 +362,55 @@
         </section>
 
         <!--Apendix-->
-        <section id="appendix">
-            <h2>Appendix - Notebook in this project</h2>
+        <section id="appendix" class="report-section section-appendix reveal-on-scroll">
+            <h2 class="section-title">Appendix - Notebook in this project</h2>
 
-            <table>
+            <table class="appendix-table" id="notebook-table">
                 <!-- This is the header row -->
-                <tr>
-                    <th>Notebook</th>
-                    <th>Purpose</th>
+                <tr class="table-header-row">
+                    <th class="table-header">Notebook</th>
+                    <th class="table-header">Purpose</th>
                 </tr>
 
-                <tr>
-                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
+                <tr class="table-row notebook-row row-cleaning">
+                    <td class="table-cell notebook-cell"><a class="notebook-link"
+                            href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/data_cleaning.ipynb'
                             target="_blank">data_cleaning.ipynb</a></td>
-                    <td>Load, audit, and clean the raw dataset; produce reusable cleaned datasets</td>
+                    <td class="table-cell purpose-cell">Load, audit, and clean the raw dataset; produce reusable cleaned
+                        datasets</td>
                 </tr>
 
-                <tr>
-                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
+                <tr class="table-row notebook-row row-rfm">
+                    <td class="table-cell notebook-cell"><a class="notebook-link"
+                            href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/rfm.ipynb'
                             target="_blank">rfm.ipynb</a></td>
-                    <td>RFM scoring and customer segmentation</td>
+                    <td class="table-cell purpose-cell">RFM scoring and customer segmentation</td>
                 </tr>
 
-                <tr>
-                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
+                <tr class="table-row notebook-row row-cohort">
+                    <td class="table-cell notebook-cell"><a class="notebook-link"
+                            href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/cohort_analysis.ipynb'
                             target="_blank">cohort_analysis.ipynb</a></td>
-                    <td>Monthly acquisition cohorts and retention curve</td>
+                    <td class="table-cell purpose-cell">Monthly acquisition cohorts and retention curve</td>
                 </tr>
 
-                <tr>
-                    <td><a href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
+                <tr class="table-row notebook-row row-revenue">
+                    <td class="table-cell notebook-cell"><a class="notebook-link"
+                            href='https://github.com/itsayushydv/data-analytics-projects/blob/main/ecom/notebook/revenue_trend.ipynb'
                             target="_blank">revenue_trend.ipynb</a> </td>
-                    <td>Seasonality, products, countries, order value, operating patterns</td>
+                    <td class="table-cell purpose-cell">Seasonality, products, countries, order value, operating
+                        patterns</td>
                 </tr>
             </table>
 
         </section>
 
     </main>
+
+    <footer id="report-footer" class="report-footer">
+        <span class="footer-note">End of report</span>
+    </footer>
+
 </body>
 
 </html>
