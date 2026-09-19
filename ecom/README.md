@@ -80,7 +80,7 @@ Meanwhile, approximately **18.9% of customers** fall into Hibernating/Lost segme
 
 This shows a strong concentration of revenue among a relatively small group of high-value customers.
 
-![Revenue Concentration HeatMap](notebook\rfm_segment_summary.png)
+![Revenue Concentration HeatMap](outputs/images/rfm_segment_summary.png)
 
 
 ---
@@ -100,7 +100,7 @@ Customer retention drops sharply after the first month:
 
 This indicates that the business has difficulty converting first-time buyers into long-term repeat customers.
 
-![Revenue Concentration HeatMap](outputs\images\cohort_retention_heatmap.png)
+![Revenue Concentration HeatMap](outputs/images/cohort_retention_heatmap.png)
 
 ![Average Retention Curve](outputs/images/avg_retention_curve.png)
 
@@ -129,8 +129,8 @@ The project analyzes revenue across:
 
 The operating pattern strongly suggests a **wholesale/B2B customer base** rather than conventional consumer retail.
 
-![Year-Over-Year Revenue](outputs\images\yoy_monthly_revenue.png)
-![Monthly Revenue](outputs\images\monthly_revenue_trend.png)
+![Year-Over-Year Revenue](outputs/images/yoy_monthly_revenue.png)
+![Monthly Revenue](outputs/images/monthly_revenue_trend.png)
 
 ---
 
